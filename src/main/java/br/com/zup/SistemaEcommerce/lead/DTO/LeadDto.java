@@ -1,9 +1,13 @@
 package br.com.zup.SistemaEcommerce.lead.DTO;
 
+import java.util.List;
+
 public class LeadDto {
     private String email;
     private String nome;
     private String telefone;
+    private List<ProdutoDto> produtos;
+
 
     public LeadDto() {
     }
@@ -36,5 +40,8 @@ public class LeadDto {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+    public void adicionarProduto(ProdutoDto novoProduto){
+        produtos.add(novoProduto);
     }
 }
