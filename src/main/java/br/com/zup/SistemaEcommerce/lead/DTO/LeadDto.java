@@ -1,21 +1,32 @@
 package br.com.zup.SistemaEcommerce.lead.DTO;
 
+import org.hibernate.validator.constraints.br.CPF;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 public class LeadDto {
+    @Email(message = "Email invalido")
     private String email;
+    @Size(min = 2, max = 21, message = "nome deve ter no minimo 2 à 21 caracteres")
+    @NotBlank
     private String nome;
+    @CPF(message = "CPF INVALIDO")
+    private String cpf;
     private String telefone;
     private List<ProdutoDto> produtos;
-
 
     public LeadDto() {
     }
 
-    public LeadDto(String email, String nome, String telefone) {
-        this.email = email;
-        this.nome = nome;
-        this.telefone = telefone;
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getEmail() {
@@ -41,7 +52,12 @@ public class LeadDto {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    public void adicionarProduto(ProdutoDto novoProduto){
-        produtos.add(novoProduto);
+
+    public List<ProdutoDto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<ProdutoDto> produtos) {
+        this.produtos = produtos;
     }
 }
